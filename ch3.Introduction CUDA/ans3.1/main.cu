@@ -2,14 +2,14 @@
 #include <iostream>
 #include <cmath>
 __global__ void a(float *a,float * b,float *c,size_t n) {
-    int i=blockIdx.y*blockDim.x+blockIdx.x;
+    int i=blockIdx.x*blockDim.x+threadIdx.x;
     if(i > n*n) return;
     a[i]=b[i]+c[i];
 }
 
 
 __global__ void b(float *a,float * b,float *c,size_t n) {
-    int offset=blockIdx.y*blockDim.x+blockIdx.x;
+    int offset=blockIdx.x*blockDim.x+threadIdx.x;
     if(offset > n) return;
     for(int i=0;i<dim;++i){
         a[i+offset]=b[i+offset]+c[i+offset];
@@ -18,7 +18,7 @@ __global__ void b(float *a,float * b,float *c,size_t n) {
 
 
 __global__ void c(float *a,float * b,float *c,size_t n) {
-    int offset=blockIdx.y*blockDim.x+blockIdx.x;
+    int offset=blockIdx.x*blockDim.x+threadIdx.x;
     if(offset > n) return;
     for(int i=0;i<dim;++i){
         a[i*dim+offset]=b[i*dim+offset]+c[i*dim+offset];

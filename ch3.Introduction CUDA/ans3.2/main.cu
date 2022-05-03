@@ -4,7 +4,7 @@
 
 
 __global__ void MatMulVec(float* ans,float* mat,float * vec,int dim) {
-    int index=blockIdx.y*blockDim.x+blockIdx.x;
+    int index=blockIdx.x*blockDim.x+threadIdx.x;
     if( index > dim*dim ) return;
     if( blockIdx.x>dim ) return;
     ans[blockIdx.x]+=mat[index]*vec[blockIdx.x];
