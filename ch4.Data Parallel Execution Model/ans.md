@@ -1,3 +1,4 @@
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 # 4 数据并行执行模型
 1. b(256)  计算 ${1536 \over 4}=384$ 与 256 最接近
 2. c(2048) 计算 $\lceil {2000 \over 512} \rceil *512=2048$
