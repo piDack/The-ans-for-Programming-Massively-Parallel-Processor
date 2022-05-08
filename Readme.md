@@ -1,6 +1,8 @@
 # The Answers 4 Programming Massively Parallel Processor (2nd edition)
 # 大规模并行处理器编程实战 第二版答案
 
+> 自己写的答案，难免有错误和遗漏，欢迎 Pr，可在 Issues 下面交流。
+
 > 因为解答中包含了大量数学公式（github不会渲染），为了阅读体验，请安装 [GitHub with MathJax](https://github.com/orsharir/github-mathjax/) 插件，或请 clone 到本地，用本地 markdown 打开，体验更佳。
 
 ## chapter 3 CUDA简介
@@ -15,4 +17,7 @@
 
 ## chapter 5 CUDA 存储器
 * [答案 & 解析](./ch5.CUDA%20memories/ans.md)
+
+## chapter 6 性能优化
+* [答案 & 解析](./ch6.improve%20Performance/ans.md)
 
