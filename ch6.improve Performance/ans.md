@@ -59,18 +59,62 @@ __global__ void reduce(float *d_in,float *d_out){
 
 ### 6.9
 
-## 矩阵乘
+Wrap 数为 b(1)，分支跳转的数量为 c(16)
 
+### 6.13
+
+可以在一定程度上提高性能。我们将最后一维进行展开可以减少同步。
+
+
+## 矩阵乘
 ### 6.5
+
+![](./pic/pic_6_11.png)
+
 
 ### 6.6
 
+b(N) Page-114
+
 ### 6.7
+
+ c(两者都) Page-117
 
 ### 6.10
 
+![](./pic/pic_6_12.png)
+
+```c++
+__global__ void MatrixMulKernel(float* d_M, float* d_N, float* d_P, int Width)
+{
+    __ shared__ float Mds[TILE_WIDTH][2*TILE_WIDTH];
+    __ shared__ float Nds[2*TILE_WIDTH][TILE_WIDTH];
+    int bx = blockIdx.x; int by = blockIdx.y;
+    int tx = threadIdx.x; int ty = threadIdx.y;
+    int Row = by * TILE_WIDTH + ty;
+    int Col = bx * TILE_WIDTH + tx;
+    float Pvalue = 0;
+    for (int m = 0; m < Width/TILE_WIDTH; ++m) {
+        Mds[tx][ty] = d_M[Row*Width + m*TILE_WIDTH+tx];
+        Nds[tx][ty] = d_N[(m*TILE_WIDTH+ty)*Width + Col];
+        __syncthreads();
+        for (int k = 0; k < 2*TILE_WIDTH; ++k)
+        Pvalue += Mds[tx][k] * Nds[k][ty];
+        __synchthreads();
+    }
+    d_P[Row*Width+Col] = Pvalue; 
+}
+```
 
 ## 其他
 ### 6.11
+
+1. 262144
+2. 32
+3. 256
+6. 10
+5. 27 行可能会产生 bank
+6. 4 次 （一共需要迭代8次，其中不产生分支的有4次）
+7. ？想不出来
+
 ### 6.12
-### 6.13
