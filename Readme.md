@@ -21,3 +21,6 @@
 ## chapter 6 性能优化
 * [答案 & 解析](./ch6.improve%20Performance/ans.md)
 
+
+## chapter 7 浮点运算
+* [答案 & 解析](./ch7.Floating%20Point/ans.md)
