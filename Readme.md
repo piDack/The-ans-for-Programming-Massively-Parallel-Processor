@@ -24,3 +24,6 @@
 
 ## chapter 7 浮点运算
 * [答案 & 解析](./ch7.Floating%20Point/ans.md)
+
+## chapter 8 并行模式：卷积
+* [答案 & 解析](./ch8.Parallel%20Patterns%20Convolution/ans.md)
