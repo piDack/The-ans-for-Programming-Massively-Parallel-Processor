@@ -27,3 +27,6 @@
 
 ## chapter 8 并行模式：卷积
 * [答案 & 解析](./ch8.Parallel%20Patterns%20Convolution/ans.md)
+
+## chapter 9 并行模式：前缀和
+* [答案 & 解析](./ch9.Parallel%20Patterns%20Prefix%20Sum/ans.md)
